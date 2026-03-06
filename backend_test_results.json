@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-03-06T10:23:00.949570",
+  "total_tests": 5,
+  "passed_tests": 5,
+  "success_rate": 100.0,
+  "test_details": [
+    {
+      "test_name": "Root API Endpoint",
+      "endpoint": "/",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_preview": "OK"
+    },
+    {
+      "test_name": "Get Site Config",
+      "endpoint": "/config",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_preview": "OK"
+    },
+    {
+      "test_name": "Submit Contact Form",
+      "endpoint": "/contact",
+      "method": "POST",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_preview": "OK"
+    },
+    {
+      "test_name": "Get All Contacts",
+      "endpoint": "/contacts",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_preview": "OK"
+    },
+    {
+      "test_name": "Update Site Config",
+      "endpoint": "/config",
+      "method": "PUT",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_preview": "OK"
+    }
+  ]
+}
