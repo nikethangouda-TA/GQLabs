@@ -1,5 +1,4 @@
-Now I'll create a clean, minimal `requirements.txt` with only what your app needs:
-Action: file_editor create /app/backend/requirements.txt --file-text "fastapi==0.110.1
+fastapi==0.110.1
 uvicorn==0.25.0
 motor==3.3.1
 pymongo==4.5.0
@@ -8,7 +7,3 @@ python-dotenv==1.2.1
 resend==2.23.0
 python-multipart==0.0.22
 dnspython==2.8.0
-"
-Observation: Overwrite successful: /app/backend/requirements.txt
-
-Installing dependencies from requirements.txt
