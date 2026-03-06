@@ -1,0 +1,172 @@
+{
+  "project_name": "GlideQuantum Labs",
+  "identity": {
+    "tone": "Cinematic, High-Tech, Premium, Authoritative, Immersive",
+    "metaphor": "The Quantum Laboratory of Digital Transformation",
+    "persona": "E1 - The Anti-AI Designer",
+    "theme_mode": "dark"
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Unbounded, sans-serif",
+      "body": "Manrope, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl tracking-tighter font-black uppercase leading-[0.9]",
+      "h2": "text-4xl md:text-6xl tracking-tight font-bold leading-none",
+      "h3": "text-2xl md:text-4xl tracking-tight font-semibold",
+      "body_lg": "text-lg md:text-xl leading-relaxed text-muted-foreground",
+      "body_sm": "text-sm leading-relaxed text-muted-foreground",
+      "label": "text-xs tracking-[0.2em] uppercase font-mono text-primary/80"
+    },
+    "imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap');"
+    ]
+  },
+  "colors": {
+    "background": {
+      "default": "#030014",
+      "card": "rgba(10, 10, 20, 0.6)",
+      "glass": "rgba(3, 0, 20, 0.4)"
+    },
+    "foreground": {
+      "default": "#FFFFFF",
+      "muted": "#94A3B8"
+    },
+    "primary": {
+      "default": "#7000FF",
+      "glow": "rgba(112, 0, 255, 0.5)"
+    },
+    "secondary": {
+      "default": "#00F0FF",
+      "glow": "rgba(0, 240, 255, 0.5)"
+    },
+    "accent": {
+      "purple": "#A855F7",
+      "pink": "#EC4899",
+      "blue": "#3B82F6"
+    },
+    "gradients": {
+      "hero": "radial-gradient(circle at center, rgba(112, 0, 255, 0.15) 0%, rgba(3, 0, 20, 0) 60%)",
+      "beam": "linear-gradient(to right, transparent, #7000FF, transparent)"
+    }
+  },
+  "layout": {
+    "spacing": {
+      "section_gap": "py-24 md:py-32",
+      "container_padding": "px-6 md:px-12",
+      "grid_gap": "gap-6 md:gap-8"
+    },
+    "grid_system": "Bento Grid - Asymmetrical layouts. Never equal columns.",
+    "container": "max-w-7xl mx-auto"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-white px-8 py-4 rounded-full font-bold tracking-wide hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(112,0,255,0.4)]",
+      "secondary": "bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
+    },
+    "cards": {
+      "style": "bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl overflow-hidden hover:border-primary/50 transition-colors duration-500 group",
+      "interaction": "Apply a 'tracing beam' effect or glow on hover."
+    },
+    "nav": {
+      "style": "fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-auto bg-black/50 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 z-50 flex items-center justify-between shadow-2xl"
+    },
+    "contact_form": {
+      "style": "bg-black/40 border border-white/10 p-8 rounded-3xl backdrop-blur-sm",
+      "input": "bg-white/5 border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary transition-all text-white placeholder:text-white/30 h-14"
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "scroll_smooth": "lenis",
+    "default_transition": {
+      "type": "spring",
+      "stiffness": 100,
+      "damping": 20
+    },
+    "animations": {
+      "fade_up": {
+        "initial": { "opacity": 0, "y": 40 },
+        "whileInView": { "opacity": 1, "y": 0 },
+        "viewport": { "once": true }
+      },
+      "stagger_children": {
+        "visible": { "transition": { "staggerChildren": 0.1 } }
+      },
+      "parallax_image": "Use useScroll and useTransform to move images slightly slower than scroll speed."
+    }
+  },
+  "assets": {
+    "icons": "Lucide React (stroke-width: 1.5)",
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1771012447561-ac075a493346?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBxdWFudHVtJTIwcGFydGljbGVzJTIwYmx1ZSUyMHB1cnBsZXxlbnwwfHx8fDE3NzI3OTIwNDB8MA&ixlib=rb-4.1.0&q=85",
+      "industries": [
+        {
+          "name": "Real Estate",
+          "url": "https://images.unsplash.com/photo-1772175195951-072f2c658829?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHw0fHxmdXR1cmlzdGljJTIwc2t5c2NyYXBlciUyMGFyY2hpdGVjdHVyZSUyMG5pZ2h0fGVufDB8fHx8MTc3Mjc5MjAzOHww&ixlib=rb-4.1.0&q=85",
+          "alt": "Futuristic Skyscraper"
+        },
+        {
+          "name": "Hospitality",
+          "url": "https://images.unsplash.com/photo-1766832255363-c9f060ade8b0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBmaW5lJTIwZGluaW5nJTIwZGFyayUyMGludGVyaW9yJTIwcmVzdGF1cmFudHxlbnwwfHx8fDE3NzI3OTIwNTF8MA&ixlib=rb-4.1.0&q=85",
+          "alt": "Luxury Dining"
+        },
+        {
+          "name": "Healthcare",
+          "url": "https://images.unsplash.com/photo-1593824261342-fd6ee146f73d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwbWVkaWNhbCUyMHRlY2hub2xvZ3klMjBob3NwaXRhbCUyMGJsdWV8ZW58MHx8fHwxNzcyNzkyMDUyfDA&ixlib=rb-4.1.0&q=85",
+          "alt": "High Tech Medical Devices"
+        },
+        {
+          "name": "Automobile",
+          "url": "https://images.unsplash.com/photo-1679901080825-74dbfe30d46e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBlbGVjdHJpYyUyMHNwb3J0cyUyMGNhciUyMHN0dWRpbyUyMGxpZ2h0aW5nfGVufDB8fHx8MTc3Mjc5MjA1NHww&ixlib=rb-4.1.0&q=85",
+          "alt": "Luxury Car Tail Light"
+        },
+        {
+          "name": "Education",
+          "url": "https://images.unsplash.com/photo-1758270704663-9d002a4b42a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjBjbGFzc3Jvb20lMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc3Mjc5MjA1M3ww&ixlib=rb-4.1.0&q=85",
+          "alt": "Digital Classroom"
+        }
+      ]
+    }
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Install 'lenis' for smooth scrolling.",
+      "Install 'framer-motion' for animations.",
+      "Install '@fontsource/unbounded' and '@fontsource/manrope' if using npm packages, or use Google Fonts import.",
+      "Configure Tailwind colors to match the 'colors' object exactly."
+    ],
+    "implementation_order": [
+      "1. Setup Global Styles (Fonts, Variables, Lenis Smooth Scroll)",
+      "2. Build the 'Cinematic Hero' with heavy initial entrance animations and the abstract background.",
+      "3. Build the 'Industry Showcase' using a horizontal scroll or parallax carousel with the selected images.",
+      "4. Build 'Services' using a Bento Grid layout with hover effects (glow/tracing beam).",
+      "5. Build 'Process' section with a vertical connecting line animation.",
+      "6. Build 'Contact' with the glassmorphic form and WhatsApp integration."
+    ],
+    "critical_rules": [
+      "NO WHITE BACKGROUNDS. The site must be dark mode only.",
+      "NO DEFAULT FONTS. Use Unbounded for all headings.",
+      "All interactive elements must have a hover state.",
+      "Use 'data-testid' for all buttons and inputs.",
+      "Ensure text contrast is readable on dark backgrounds (use text-gray-300 for body)."
+    ]
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: 'transition: all'. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add '.App { text-align: center; }'",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Use 'sonner' for toasts.",
+    "Components MUST use named exports."
+  ]
+}
