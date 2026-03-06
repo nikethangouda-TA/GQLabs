@@ -67,6 +67,11 @@ code {
   border-radius: 3px;
 }
 
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 @layer base {
   [data-debug-wrapper="true"] {
     display: contents !important;
