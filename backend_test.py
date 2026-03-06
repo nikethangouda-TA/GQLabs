@@ -133,6 +133,44 @@ class GlideQuantumAPITester:
             data=test_config
         )
 
+    def test_book_demo(self):
+        """Test POST /api/book-demo"""
+        timestamp = datetime.now().strftime('%H%M%S')
+        test_data = {
+            "name": f"Demo Test User {timestamp}",
+            "phone": "+91 9876543210",
+            "email": f"demo{timestamp}@test.com",
+            "business_name": "Test Demo Business",
+            "preferred_date": "2024-12-20",
+            "preferred_time": "10:00 AM",
+            "notes": "This is a test demo booking for API validation."
+        }
+        
+        success, response = self.run_test(
+            "Book Demo Call", 
+            "POST", 
+            "/book-demo", 
+            200,
+            data=test_data
+        )
+        
+        if success and response:
+            # Verify the response contains expected fields
+            required_fields = ['id', 'name', 'phone', 'preferred_date', 'preferred_time', 'timestamp', 'status']
+            missing_fields = [field for field in required_fields if field not in response]
+            if missing_fields:
+                print(f"⚠️  WARNING: Demo booking response missing fields: {missing_fields}")
+                return False, response
+            else:
+                print(f"✅ Demo booking response contains all required fields")
+                return True, response
+        
+        return success, response
+
+    def test_get_demo_bookings(self):
+        """Test GET /api/demo-bookings"""
+        return self.run_test("Get All Demo Bookings", "GET", "/demo-bookings", 200)
+
     def run_all_tests(self):
         """Run all API tests"""
         print("=" * 60)
@@ -154,6 +192,10 @@ class GlideQuantumAPITester:
         
         # Test config update
         self.test_update_config()
+        
+        # Test new demo booking functionality
+        self.test_book_demo()
+        self.test_get_demo_bookings()
 
         # Print summary
         print("\n" + "=" * 60)

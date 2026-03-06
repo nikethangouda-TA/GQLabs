@@ -27,7 +27,7 @@ export function MarqueeBand() {
   );
 }
 
-export function CTABand() {
+export function CTABand({ onBookDemo }) {
   return (
     <section data-testid="cta-band" className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-radial-hero" />
@@ -73,22 +73,22 @@ export function CTABand() {
           transition={{ delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
+          <button
+            data-testid="cta-book-demo-button"
+            onClick={onBookDemo}
+            className="magnetic-btn px-10 py-5 bg-[#7000FF] text-white font-bold text-lg rounded-full shadow-[0_0_40px_rgba(112,0,255,0.4)] flex items-center gap-3"
+          >
+            Book a Free Demo Call
+          </button>
           <a
             data-testid="cta-whatsapp-button"
             href={SITE_CONFIG.getWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-btn px-10 py-5 bg-[#7000FF] text-white font-bold text-lg rounded-full shadow-[0_0_40px_rgba(112,0,255,0.4)] flex items-center gap-3"
+            className="magnetic-btn px-10 py-5 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-colors duration-300 backdrop-blur-md flex items-center gap-2"
           >
-            Start Your Project Now
+            WhatsApp Us
           </a>
-          <button
-            data-testid="cta-scroll-contact"
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="magnetic-btn px-10 py-5 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-colors duration-300 backdrop-blur-md"
-          >
-            Fill The Form
-          </button>
         </motion.div>
       </div>
     </section>

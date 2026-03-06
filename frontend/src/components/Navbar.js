@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import SITE_CONFIG from '@/config';
 
-export function Navbar() {
+export function Navbar({ onBookDemo }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -17,7 +17,8 @@ export function Navbar() {
     { label: 'Industries', href: '#industries' },
     { label: 'Services', href: '#services' },
     { label: 'Process', href: '#process' },
-    { label: 'Why Us', href: '#why-us' },
+    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'FAQ', href: '#faq' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -71,15 +72,13 @@ export function Navbar() {
         </div>
 
         {/* CTA */}
-        <a
+        <button
           data-testid="nav-cta"
-          href={SITE_CONFIG.getWhatsAppLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#7000FF] text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(112,0,255,0.4)] shrink-0"
+          onClick={onBookDemo}
+          className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#7000FF] text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(112,0,255,0.4)] shrink-0 cursor-pointer"
         >
-          Let's Talk <ArrowUpRight size={14} />
-        </a>
+          Book Demo <ArrowUpRight size={14} />
+        </button>
 
         {/* Mobile toggle */}
         <button
@@ -114,15 +113,13 @@ export function Navbar() {
                 {link.label}
               </motion.button>
             ))}
-            <a
+            <button
               data-testid="nav-mobile-cta"
-              href={SITE_CONFIG.getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mt-3 px-4 py-3 bg-[#7000FF] text-white text-center font-semibold rounded-xl"
+              onClick={() => { setIsOpen(false); onBookDemo(); }}
+              className="block w-full mt-3 px-4 py-3 bg-[#7000FF] text-white text-center font-semibold rounded-xl"
             >
-              Let's Talk on WhatsApp
-            </a>
+              Book a Demo Call
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

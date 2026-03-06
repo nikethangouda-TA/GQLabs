@@ -63,7 +63,7 @@ function OrbitRing({ size, duration, delay, color }) {
   );
 }
 
-export function Hero() {
+export function Hero({ onBookDemo }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -165,23 +165,23 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1.7 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
+          <button
+            data-testid="hero-cta-book-demo"
+            onClick={onBookDemo}
+            className="magnetic-btn px-8 py-4 bg-[#7000FF] text-white font-bold rounded-full shadow-[0_0_30px_rgba(112,0,255,0.4)] flex items-center gap-2"
+          >
+            Book a Free Demo Call
+            <ArrowDown size={16} className="rotate-[-90deg]" />
+          </button>
           <a
             data-testid="hero-cta-whatsapp"
             href={SITE_CONFIG.getWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="magnetic-btn px-8 py-4 bg-[#7000FF] text-white font-bold rounded-full shadow-[0_0_30px_rgba(112,0,255,0.4)] flex items-center gap-2"
+            className="magnetic-btn px-8 py-4 border border-white/20 text-white rounded-full backdrop-blur-md hover:bg-white/5 transition-colors duration-300 flex items-center gap-2"
           >
-            Start Your Project
-            <ArrowDown size={16} className="rotate-[-90deg]" />
+            WhatsApp Us
           </a>
-          <button
-            data-testid="hero-cta-explore"
-            onClick={() => document.querySelector('#industries')?.scrollIntoView({ behavior: 'smooth' })}
-            className="magnetic-btn px-8 py-4 border border-white/20 text-white rounded-full backdrop-blur-md hover:bg-white/5 transition-colors duration-300"
-          >
-            Explore Our Work
-          </button>
         </motion.div>
       </motion.div>
 

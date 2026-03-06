@@ -41,6 +41,30 @@ class ContactSubmissionCreate(BaseModel):
     message: Optional[str] = ""
 
 
+class DemoBooking(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    phone: str
+    email: Optional[str] = ""
+    business_name: Optional[str] = ""
+    preferred_date: str
+    preferred_time: str
+    notes: Optional[str] = ""
+    status: str = "pending"
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+class DemoBookingCreate(BaseModel):
+    name: str
+    phone: str
+    email: Optional[str] = ""
+    business_name: Optional[str] = ""
+    preferred_date: str
+    preferred_time: str
+    notes: Optional[str] = ""
+
+
 class SiteConfig(BaseModel):
     model_config = ConfigDict(extra="ignore")
     whatsapp_number: str = "919032247068"
@@ -70,6 +94,24 @@ async def get_contacts():
         if isinstance(c['timestamp'], str):
             c['timestamp'] = datetime.fromisoformat(c['timestamp'])
     return contacts
+
+
+@api_router.post("/book-demo", response_model=DemoBooking)
+async def book_demo(input_data: DemoBookingCreate):
+    booking = DemoBooking(**input_data.model_dump())
+    doc = booking.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    await db.demo_bookings.insert_one(doc)
+    return booking
+
+
+@api_router.get("/demo-bookings", response_model=List[DemoBooking])
+async def get_demo_bookings():
+    bookings = await db.demo_bookings.find({}, {"_id": 0}).to_list(1000)
+    for b in bookings:
+        if isinstance(b['timestamp'], str):
+            b['timestamp'] = datetime.fromisoformat(b['timestamp'])
+    return bookings
 
 
 @api_router.get("/config", response_model=SiteConfig)
