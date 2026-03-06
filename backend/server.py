@@ -196,6 +196,80 @@ async def send_demo_booking_notification(booking: DemoBooking):
         logger.error(f"Failed to send demo booking notification: {e}")
 
 
+async def send_client_confirmation(booking: DemoBooking):
+    """Send a confirmation email to the client who booked the demo."""
+    if not booking.email:
+        logger.info(f"No email provided by {booking.name}, skipping client confirmation")
+        return
+
+    html = f"""
+    <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a14; color: #ffffff; border-radius: 16px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #7000FF, #00F0FF); padding: 32px; text-align: center;">
+            <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.2); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <span style="font-size: 24px; font-weight: 800; color: #fff;">G</span>
+            </div>
+            <h1 style="margin: 0; font-size: 22px; color: #fff; font-weight: 700;">Your Demo Call is Confirmed!</h1>
+            <p style="margin: 8px 0 0; font-size: 14px; color: rgba(255,255,255,0.8);">We're excited to show you what we can build for your business</p>
+        </div>
+        <div style="padding: 32px;">
+            <p style="font-size: 15px; color: #e2e8f0; line-height: 1.7; margin: 0 0 24px;">
+                Hi <strong style="color: #fff;">{booking.name}</strong>,
+            </p>
+            <p style="font-size: 15px; color: #94A3B8; line-height: 1.7; margin: 0 0 24px;">
+                Thank you for booking a demo call with GlideQuantum Labs! We've received your request and Srinikethan will personally connect with you.
+            </p>
+
+            <div style="background: rgba(112, 0, 255, 0.08); border: 1px solid rgba(112, 0, 255, 0.25); border-radius: 16px; padding: 24px; margin-bottom: 24px; text-align: center;">
+                <p style="margin: 0 0 4px; font-size: 12px; color: #A855F7; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Your Scheduled Call</p>
+                <p style="margin: 8px 0 0; font-size: 28px; font-weight: 800; color: #fff;">{booking.preferred_date}</p>
+                <p style="margin: 4px 0 0; font-size: 20px; color: #00F0FF; font-weight: 600;">{booking.preferred_time} IST</p>
+                <p style="margin: 12px 0 0; font-size: 13px; color: #94A3B8;">15 minutes · Free · No obligation</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                <p style="margin: 0 0 12px; font-size: 13px; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px;">What to expect:</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px 0; color: #22C55E; font-size: 16px; width: 28px; vertical-align: top;">&#10003;</td>
+                        <td style="padding: 8px 0; color: #e2e8f0; font-size: 14px;">A quick understanding of your business needs</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #22C55E; font-size: 16px; width: 28px; vertical-align: top;">&#10003;</td>
+                        <td style="padding: 8px 0; color: #e2e8f0; font-size: 14px;">Live demo of solutions relevant to your industry</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #22C55E; font-size: 16px; width: 28px; vertical-align: top;">&#10003;</td>
+                        <td style="padding: 8px 0; color: #e2e8f0; font-size: 14px;">Custom recommendation & transparent pricing</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p style="font-size: 14px; color: #94A3B8; line-height: 1.7; margin: 0 0 24px;">
+                Srinikethan will confirm your slot via WhatsApp within 2 hours. If you need to reschedule, simply reply to this email or message us on WhatsApp.
+            </p>
+
+            <div style="text-align: center;">
+                <a href="https://wa.me/919032247068?text=Hi%20Srinikethan%2C%20I%20just%20booked%20a%20demo%20call%20for%20{booking.preferred_date}%20at%20{booking.preferred_time}." style="display: inline-block; padding: 14px 32px; background: #22C55E; color: #fff; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: 700;">Chat on WhatsApp</a>
+            </div>
+        </div>
+        <div style="padding: 20px 32px; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+            <p style="margin: 0 0 4px; font-size: 12px; color: #94A3B8; font-weight: 600;">GlideQuantum Labs</p>
+            <p style="margin: 0; font-size: 11px; color: rgba(148,163,184,0.6);">Hyderabad, India · glidequantumlabs.com</p>
+        </div>
+    </div>
+    """
+    try:
+        await asyncio.to_thread(resend.Emails.send, {
+            "from": f"GlideQuantum Labs <{SENDER_EMAIL}>",
+            "to": [booking.email],
+            "subject": f"Your Demo Call is Confirmed — {booking.preferred_date} at {booking.preferred_time}",
+            "html": html,
+        })
+        logger.info(f"Client confirmation email sent to {booking.email}")
+    except Exception as e:
+        logger.error(f"Failed to send client confirmation to {booking.email}: {e}")
+
+
 # ─── Routes ───
 
 @api_router.get("/")
@@ -229,8 +303,9 @@ async def book_demo(input_data: DemoBookingCreate):
     doc = booking.model_dump()
     doc['timestamp'] = doc['timestamp'].isoformat()
     await db.demo_bookings.insert_one(doc)
-    # Send email notification (non-blocking)
+    # Send email notifications (non-blocking)
     asyncio.create_task(send_demo_booking_notification(booking))
+    asyncio.create_task(send_client_confirmation(booking))
     return booking
 
 

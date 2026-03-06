@@ -1,7 +1,7 @@
 # GlideQuantum Labs - Agency Website PRD
 
 ## Original Problem Statement
-Rebuild the GlideQuantum Labs agency website (glidequantumlabs.com) to serve as a powerful sales presentation tool. Target: ALL business industries. Cinematic, motion-heavy. WhatsApp + Email notifications for leads.
+Rebuild GlideQuantum Labs agency website as a cinematic, motion-heavy sales tool for ALL industries. WhatsApp + Email notifications.
 
 ## Architecture
 - **Frontend**: React 19 + Tailwind CSS + Framer Motion + Lenis Smooth Scroll
@@ -10,35 +10,24 @@ Rebuild the GlideQuantum Labs agency website (glidequantumlabs.com) to serve as 
 
 ## What's Been Implemented
 
-### Phase 1 — Core Website (March 6, 2026)
-- Hero, Industries (12+), Services (10), Process (5-step), Why Choose Us, CTA, Contact Form, Footer
-- Floating glassmorphic navbar, marquee band, particle effects, parallax scroll
+### Phase 1 — Core Website
+- Hero with particles/orbits, Industries (12+), Services (10), Process (5-step), Why Choose Us, CTA, Contact, Footer
+- Floating glassmorphic navbar, marquee band, parallax scroll
 
-### Phase 2 — Enhancements (March 6, 2026)
-- WhatsApp Live Chat Widget, Book a Demo Call Scheduler (3-step), Testimonials (6), FAQ (8), Before vs After Transformation
+### Phase 2 — Enhancements
+- WhatsApp Live Chat Widget, Book Demo Scheduler (3-step), Testimonials (6), FAQ (8), Before vs After
 
-### Phase 3 — Email Notifications (March 6, 2026)
-- **Resend integration** — instant email to Nikethangouda@gmail.com on:
-  - New contact form submission (with lead details + WhatsApp reply button)
-  - New demo call booking (with date/time + confirm via WhatsApp button)
+### Phase 3 — Email Notifications (Resend)
+- **Owner notification** on contact form submit + demo booking (to Nikethangouda@gmail.com)
+- **Client confirmation email** on demo booking (to client's email with date/time/what-to-expect/WhatsApp button)
 - Sender: notifications@glidequantumlabs.com (verified domain)
-- Beautiful dark-themed HTML email templates matching site aesthetic
-- Non-blocking async email delivery
+- Beautiful dark-themed HTML email templates
 
-## API Endpoints
-| Method | Endpoint | Description | Email? |
-|--------|----------|-------------|--------|
-| POST | /api/contact | Submit contact form | Yes |
-| GET | /api/contacts | List all contacts | No |
-| POST | /api/book-demo | Book demo call | Yes |
-| GET | /api/demo-bookings | List all bookings | No |
-| GET | /api/config | Get site config | No |
-| PUT | /api/config | Update site config | No |
-
-## Contact Config
-- WhatsApp: 919032247068 | Email: Nikethangouda@gmail.com
-- Config file: /app/frontend/src/config.js
-- Sender: notifications@glidequantumlabs.com
+## Email Flows
+| Trigger | To Owner | To Client |
+|---------|----------|-----------|
+| Contact form submit | Lead details + WhatsApp reply btn | — |
+| Demo call booked | Booking details + WhatsApp confirm btn | Confirmation with date/time + what to expect + WhatsApp btn |
 
 ## Backlog
 ### P1
