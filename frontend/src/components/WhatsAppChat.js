@@ -32,7 +32,7 @@ export function WhatsAppChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[999]" data-testid="whatsapp-chat-widget">
+    <div className="fixed bottom-6 right-24 z-[999]" data-testid="whatsapp-chat-widget">
       {/* Chat window */}
       <AnimatePresence>
         {isOpen && (
