@@ -3,126 +3,149 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import SITE_CONFIG from '@/config';
 
+const marqueeItems = [
+    'WEBSITES', 'MOBILE APPS', 'DESKTOP APPS', 'CRM SYSTEMS',
+    'AUTOMATION', 'ANALYTICS', 'E-COMMERCE', 'BOOKING SYSTEMS',
+    'WHATSAPP BOTS', 'INVENTORY', 'POS SYSTEMS', 'DASHBOARDS',
+];
+
 export function Navbar({ onBookDemo }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-  const navLinks = [
-    { label: 'Industries', href: '#industries' },
-    { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
-  ];
+    const navLinks = [
+        { label: 'Industries', href: '#industries' },
+        { label: 'Services', href: '#services' },
+        { label: 'Process', href: '#process' },
+        { label: 'Testimonials', href: '#testimonials' },
+        { label: 'FAQ', href: '#faq' },
+        { label: 'Contact', href: '#contact' },
+    ];
 
-  const scrollTo = (href) => {
-    setIsOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+    const scrollTo = (href) => {
+        setIsOpen(false);
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
 
-  return (
-    <motion.nav
-      data-testid="navbar"
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-        scrolled ? 'w-[95%] md:w-auto' : 'w-[95%] md:w-auto'
-      }`}
-    >
-      <div className={`flex items-center justify-between gap-4 md:gap-8 px-5 py-3 rounded-full border transition-all duration-500 ${
-        scrolled 
-          ? 'bg-black/70 backdrop-blur-xl border-white/10 shadow-2xl' 
-          : 'bg-black/30 backdrop-blur-md border-white/5'
-      }`}>
-        {/* Logo */}
-        <button
-          data-testid="nav-logo"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center gap-2 cursor-pointer shrink-0"
-        >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7000FF] to-[#00F0FF] flex items-center justify-center">
-            <span className="font-bold text-white text-sm" style={{ fontFamily: 'Unbounded' }}>G</span>
-          </div>
-          <span className="text-white font-bold text-sm hidden sm:block" style={{ fontFamily: 'Unbounded' }}>
-            {SITE_CONFIG.companyName.split(' ')[0]}
-          </span>
-        </button>
+    return (
+        <div className="fixed top-0 left-0 right-0 z-50">
+            {/* Marquee ticker — always visible, scrolls even as user scrolls page */}
+            <div className="w-full bg-black/80 backdrop-blur-md border-b border-white/5 overflow-hidden py-2">
+                <div className="flex marquee-track" style={{ width: 'max-content' }}>
+                    {[...marqueeItems, ...marqueeItems].map((item, i) => (
+                        <div key={i} className="flex items-center gap-6 px-6">
+                            <span
+                                className="text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase text-white/30 whitespace-nowrap"
+                                style={{ fontFamily: 'Unbounded' }}
+                            >
+                                {item}
+                            </span>
+                            <div className="w-1 h-1 rounded-full bg-[#7000FF]/50" />
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, '-')}`}
-              onClick={() => scrollTo(link.href)}
-              className="px-4 py-2 text-sm text-white/60 hover:text-white rounded-full hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+            {/* Main navbar */}
+            <motion.nav
+                data-testid="navbar"
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="flex justify-center px-4 pt-3"
             >
-              {link.label}
-            </button>
-          ))}
+                <div className={`flex items-center justify-between gap-4 md:gap-8 px-5 py-3 rounded-full border transition-all duration-500 ${scrolled
+                        ? 'bg-black/70 backdrop-blur-xl border-white/10 shadow-2xl'
+                        : 'bg-black/30 backdrop-blur-md border-white/5'
+                    }`}>
+                    {/* Logo */}
+                    <button
+                        data-testid="nav-logo"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="flex items-center gap-2 cursor-pointer shrink-0"
+                    >
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7000FF] to-[#00F0FF] flex items-center justify-center">
+                            <span className="font-bold text-white text-sm" style={{ fontFamily: 'Unbounded' }}>G</span>
+                        </div>
+                        <span className="text-white font-bold text-sm hidden sm:block" style={{ fontFamily: 'Unbounded' }}>
+                            {SITE_CONFIG.companyName.split(' ')[0]}
+                        </span>
+                    </button>
+
+                    {/* Desktop links */}
+                    <div className="hidden md:flex items-center gap-1">
+                        {navLinks.map((link) => (
+                            <button
+                                key={link.href}
+                                data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, '-')}`}
+                                onClick={() => scrollTo(link.href)}
+                                className="px-4 py-2 text-sm text-white/60 hover:text-white rounded-full hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+                            >
+                                {link.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* CTA */}
+                    <button
+                        data-testid="nav-cta"
+                        onClick={onBookDemo}
+                        className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#7000FF] text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(112,0,255,0.4)] shrink-0 cursor-pointer"
+                    >
+                        Book Demo <ArrowUpRight size={14} />
+                    </button>
+
+                    {/* Mobile toggle */}
+                    <button
+                        data-testid="nav-mobile-toggle"
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-white p-2 relative z-50"
+                    >
+                        {isOpen ? <X size={22} /> : <Menu size={22} />}
+                    </button>
+                </div>
+            </motion.nav>
+
+            {/* Mobile menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className="md:hidden mx-4 mt-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl"
+                    >
+                        {navLinks.map((link, i) => (
+                            <motion.button
+                                key={link.href}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.05 }}
+                                data-testid={`nav-mobile-link-${link.label.toLowerCase().replace(/\s/g, '-')}`}
+                                onClick={() => scrollTo(link.href)}
+                                className="block w-full text-left px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
+                            >
+                                {link.label}
+                            </motion.button>
+                        ))}
+                        <button
+                            data-testid="nav-mobile-cta"
+                            onClick={() => { setIsOpen(false); onBookDemo(); }}
+                            className="block w-full mt-3 px-4 py-3 bg-[#7000FF] text-white text-center font-semibold rounded-xl"
+                        >
+                            Book a Demo Call
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
-
-        {/* CTA */}
-        <button
-          data-testid="nav-cta"
-          onClick={onBookDemo}
-          className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#7000FF] text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(112,0,255,0.4)] shrink-0 cursor-pointer"
-        >
-          Book Demo <ArrowUpRight size={14} />
-        </button>
-
-        {/* Mobile toggle */}
-        <button
-          data-testid="nav-mobile-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white p-2 relative z-50"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden mt-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl"
-          >
-            {navLinks.map((link, i) => (
-              <motion.button
-                key={link.href}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                data-testid={`nav-mobile-link-${link.label.toLowerCase().replace(/\s/g, '-')}`}
-                onClick={() => scrollTo(link.href)}
-                className="block w-full text-left px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-200"
-              >
-                {link.label}
-              </motion.button>
-            ))}
-            <button
-              data-testid="nav-mobile-cta"
-              onClick={() => { setIsOpen(false); onBookDemo(); }}
-              className="block w-full mt-3 px-4 py-3 bg-[#7000FF] text-white text-center font-semibold rounded-xl"
-            >
-              Book a Demo Call
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
-  );
+    );
 }
