@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '@/App.css';
 import { Toaster } from 'sonner';
-import Lenis from '@studio-freight/lenis';
 
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
@@ -21,27 +20,7 @@ import { BookDemo } from '@/components/BookDemo';
 function App() {
   const [showBookDemo, setShowBookDemo] = useState(false);
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 0.6,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      lerp: 0.08,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    window.__openBookDemo = () => setShowBookDemo(true);
-
-    return () => {
-      lenis.destroy();
-      delete window.__openBookDemo;
-    };
-  }, []);
+  window.__openBookDemo = () => setShowBookDemo(true);
 
   return (
     <div className="App relative" style={{ background: '#030014', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
