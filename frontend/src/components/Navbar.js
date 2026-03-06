@@ -85,7 +85,7 @@ export function Navbar() {
         <button
           data-testid="nav-mobile-toggle"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white p-1"
+          className="md:hidden text-white p-2 relative z-50"
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>

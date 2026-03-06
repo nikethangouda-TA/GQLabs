@@ -37,17 +37,17 @@ export function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone) {
-      toast.error('Please enter your name and phone number.');
+      toast.error('Please enter your name and phone number.', { duration: 5000 });
       return;
     }
 
     setSending(true);
     try {
       await axios.post(`${API}/contact`, form);
-      toast.success('Message sent! We\'ll get back to you within 4 hours.');
+      toast.success('Message sent! We\'ll get back to you within 4 hours.', { duration: 5000 });
       setForm({ name: '', phone: '', business_name: '', industry: '', message: '' });
     } catch (err) {
-      toast.error('Something went wrong. Please try WhatsApp instead.');
+      toast.error('Something went wrong. Please try WhatsApp instead.', { duration: 5000 });
     }
     setSending(false);
   };
