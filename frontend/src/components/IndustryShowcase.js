@@ -60,7 +60,7 @@ const industries = [
         icon: Plane,
         tagline: 'Booking engines, itineraries, partner dashboards',
         color: '#F97316',
-        image: 'https://images.unsplash.com/photo-1488646472419-a7654a26ae47?w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80',
     },
     {
         name: 'Retail & E-commerce',
