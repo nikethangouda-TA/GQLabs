@@ -23,9 +23,10 @@ function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      lerp: 0.08,
     });
 
     function raf(time) {
@@ -34,7 +35,6 @@ function App() {
     }
     requestAnimationFrame(raf);
 
-    // Expose booking trigger globally for child components
     window.__openBookDemo = () => setShowBookDemo(true);
 
     return () => {
@@ -44,7 +44,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App relative" style={{ background: '#030014' }}>
+    <div className="App relative" style={{ background: '#030014', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
       <Toaster
         position="top-right"
         toastOptions={{
