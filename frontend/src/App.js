@@ -18,46 +18,46 @@ import { WhatsAppChat } from '@/components/WhatsAppChat';
 import { BookDemo } from '@/components/BookDemo';
 
 function App() {
-  const [showBookDemo, setShowBookDemo] = useState(false);
+    const [showBookDemo, setShowBookDemo] = useState(false);
 
-  window.__openBookDemo = () => setShowBookDemo(true);
+    window.__openBookDemo = () => setShowBookDemo(true);
 
-  return (
-    <div className="App relative" style={{ background: '#030014', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: 'rgba(10,10,20,0.9)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            color: '#fff',
-            backdropFilter: 'blur(16px)',
-          },
-        }}
-      />
-      <Navbar onBookDemo={() => setShowBookDemo(true)} />
-      <Hero onBookDemo={() => setShowBookDemo(true)} />
-      <MarqueeBand />
-      <IndustryShowcase />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <Services />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <BeforeAfter />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <Process />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <Testimonials />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <WhyChooseUs />
-      <div className="section-beam max-w-7xl mx-auto" />
-      <FAQ />
-      <CTABand onBookDemo={() => setShowBookDemo(true)} />
-      <Contact />
-      <Footer />
-      <WhatsAppChat />
-      <BookDemo isOpen={showBookDemo} onClose={() => setShowBookDemo(false)} />
-    </div>
-  );
+    return (
+        <div className="App relative" style={{ background: 'var(--bg-deep)', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
+            <Toaster
+                position="top-right"
+                toastOptions={{
+                    style: {
+                        background: 'rgba(10,10,20,0.9)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        color: '#fff',
+                        backdropFilter: 'blur(16px)',
+                    },
+                }}
+            />
+            <Navbar onBookDemo={() => setShowBookDemo(true)} />
+            <Hero onBookDemo={() => setShowBookDemo(true)} />
+            <MarqueeBand />
+            <IndustryShowcase />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <Services />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <BeforeAfter />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <Process />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <Testimonials />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <WhyChooseUs />
+            <div className="section-beam max-w-7xl mx-auto" />
+            <FAQ />
+            <CTABand onBookDemo={() => setShowBookDemo(true)} />
+            <Contact />
+            <Footer />
+            <WhatsAppChat />
+            <BookDemo isOpen={showBookDemo} onClose={() => setShowBookDemo(false)} />
+        </div>
+    );
 }
 
 export default App;

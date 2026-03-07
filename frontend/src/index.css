@@ -41,7 +41,6 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
-    transition: background 0.5s ease, color 0.5s ease;
 }
 
 h1,
@@ -100,13 +99,37 @@ section {
     }
 }
 
+
 /* ==================================================================
-   LIGHT MODE OVERRIDES
-   Added: body.light class toggles the site to a pastel light theme.
-   Dark mode (default) is completely untouched above.
+   LIGHT MODE — COMPLETE OVERRIDES
+   Toggle: body.light class added/removed via Navbar toggle button.
+   Dark mode (default) is COMPLETELY UNTOUCHED above this line.
    ================================================================== */
 
-/* Light mode CSS variables */
+/* ---- Theme toggle button ---- */
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+    border-color: #7000FF;
+    transform: scale(1.1);
+}
+
+/* ---- Light mode variables ---- */
 body.light {
     --bg-deep: #f4f2fa;
     --bg-card: rgba(255, 255, 255, 0.6);
@@ -117,8 +140,21 @@ body.light {
     --secondary-glow: rgba(6, 182, 212, 0.2);
 }
 
-/* Light mode pastel background blobs */
-body.light::before {
+body.light::-webkit-scrollbar-track {
+    background: #f4f2fa;
+}
+
+body.light::-webkit-scrollbar-thumb {
+    background: rgba(196, 181, 253, 0.5);
+}
+
+/* ---- ROOT APP WRAPPER — the #1 fix ---- */
+body.light .App {
+    background: #f4f2fa !important;
+}
+
+/* Pastel gradient blobs behind everything */
+body.light .App::before {
     content: '';
     position: fixed;
     inset: 0;
@@ -129,29 +165,58 @@ body.light::before {
         radial-gradient(ellipse 45% 35% at 80% 15%, rgba(165, 243, 252, 0.25) 0%, transparent 55%),
         radial-gradient(ellipse 40% 45% at 60% 80%, rgba(252, 211, 243, 0.25) 0%, transparent 55%),
         radial-gradient(ellipse 45% 35% at 20% 70%, rgba(187, 247, 208, 0.2) 0%, transparent 55%);
-    opacity: 1;
-    transition: opacity 0.5s;
 }
 
-/* Remove dark background effects in light mode */
-body.light .bg-grid,
-body.light .bg-radial-hero,
+/* ---- Background effects (grid, radials) ---- */
+body.light .bg-grid {
+    background-image:
+        linear-gradient(rgba(112, 0, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(112, 0, 255, 0.025) 1px, transparent 1px) !important;
+}
+
+body.light .bg-radial-hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196, 181, 253, 0.15) 0%, transparent 60%) !important;
+}
+
 body.light .bg-radial-secondary {
-    opacity: 0.05 !important;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(165, 243, 252, 0.08) 0%, transparent 60%) !important;
 }
 
-/* Marquee bar */
+/* ---- Glass Cards ---- */
+body.light .glass-card {
+    background: rgba(255, 255, 255, 0.55) !important;
+    border-color: rgba(196, 181, 253, 0.15) !important;
+}
+
+body.light .glass-card:hover {
+    border-color: rgba(124, 58, 237, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.08) !important;
+}
+
+/* ---- Section beam dividers ---- */
+body.light .section-beam {
+    background: linear-gradient(90deg, transparent, rgba(196, 181, 253, 0.3), transparent) !important;
+}
+
+/* ---- Beam effect on cards ---- */
+body.light .beam-effect::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4), transparent) !important;
+}
+
+/* ---- Glow effects ---- */
+body.light .glow-primary {
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1) !important;
+}
+
+body.light .glow-secondary {
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1) !important;
+}
+
+/* ---- NAVBAR / MARQUEE ---- */
 body.light .bg-black\/80 {
     background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(20px);
 }
 
-/* Marquee text */
-body.light .text-white\/30 {
-    color: rgba(112, 0, 255, 0.2) !important;
-}
-
-/* Navbar pill background */
 body.light .bg-black\/70 {
     background: rgba(255, 255, 255, 0.8) !important;
 }
@@ -160,13 +225,11 @@ body.light .bg-black\/30 {
     background: rgba(255, 255, 255, 0.6) !important;
 }
 
-/* Nav borders */
-body.light .border-white\/10,
-body.light .border-white\/5 {
-    border-color: rgba(196, 181, 253, 0.15) !important;
+body.light .bg-black\/90 {
+    background: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Text colors */
+/* ---- GLOBAL TEXT COLOR OVERRIDES ---- */
 body.light .text-white {
     color: #1a1a2e !important;
 }
@@ -207,49 +270,49 @@ body.light .text-white\/15 {
     color: #94a3b8 !important;
 }
 
-/* Glass backgrounds */
+/* ---- BORDER OVERRIDES ---- */
+body.light .border-white\/10,
+body.light .border-white\/5,
+body.light .border-white\/20 {
+    border-color: rgba(196, 181, 253, 0.15) !important;
+}
+
+/* ---- BACKGROUND OPACITY OVERRIDES ---- */
 body.light .bg-white\/5 {
-    background: rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.45) !important;
 }
 
 body.light .bg-white\/10 {
-    background: rgba(255, 255, 255, 0.6) !important;
+    background: rgba(255, 255, 255, 0.55) !important;
 }
 
-/* Cards - keep dark overlays on industry image cards */
-body.light .beam-effect {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+body.light .bg-white\/3 {
+    background: rgba(255, 255, 255, 0.35) !important;
 }
 
-body.light .beam-effect:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
+body.light .bg-white\/\[0\.03\] {
+    background: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* Service/FAQ/Process cards */
-body.light [class*="bg-white/5"],
-body.light [class*="bg-white/10"] {
-    background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(16px);
+/* ---- SHADOW OVERRIDES ---- */
+body.light .shadow-2xl {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Mobile menu */
-body.light .bg-black\/90 {
-    background: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Input fields */
+/* ---- FORM INPUTS ---- */
 body.light input,
 body.light textarea,
 body.light select {
     background: rgba(255, 255, 255, 0.6) !important;
-    border-color: rgba(196, 181, 253, 0.15) !important;
+    border-color: rgba(196, 181, 253, 0.2) !important;
     color: #1a1a2e !important;
 }
 
 body.light input:focus,
 body.light textarea:focus,
 body.light select:focus {
-    border-color: #7000FF !important;
+    border-color: #7c3aed !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08) !important;
 }
 
 body.light input::placeholder,
@@ -257,109 +320,88 @@ body.light textarea::placeholder {
     color: #94a3b8 !important;
 }
 
-/* Scrollbar */
-body.light::-webkit-scrollbar-track {
-    background: #f4f2fa;
+/* ---- KEEP THESE ELEMENTS UNCHANGED ---- */
+
+/* Purple CTA buttons stay purple with white text */
+body.light .bg-\[#7000FF\],
+body.light [class*="bg-[#7000FF]"] {
+    background: #7c3aed !important;
 }
 
-body.light::-webkit-scrollbar-thumb {
-    background: rgba(196, 181, 253, 0.5);
+body.light .bg-\[#7000FF\] *,
+body.light [data-testid="nav-cta"],
+body.light [data-testid="nav-cta"] *,
+body.light [data-testid="nav-mobile-cta"],
+body.light [data-testid="hero-cta-book-demo"],
+body.light [data-testid="hero-cta-book-demo"] * {
+    color: white !important;
 }
 
-/* Shadow fixes for light mode */
-body.light .shadow-2xl {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
+/* WhatsApp stays green with white content */
+body.light .bg-\[#22C55E\],
+body.light [data-testid="whatsapp-chat-toggle"],
+body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\] {
+    color: white !important;
 }
 
-/* CTA band */
-body.light [data-testid="cta-band"] {
-    background: linear-gradient(135deg, rgba(196, 181, 253, 0.15), rgba(165, 243, 252, 0.1), rgba(252, 211, 243, 0.1)) !important;
+body.light [data-testid="whatsapp-chat-toggle"] * {
+    color: white !important;
 }
 
-/* Big background text */
-body.light .text-white\/\[0\.02\] {
+/* WhatsApp chat window header */
+body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\] * {
+    color: white !important;
+}
+
+/* Industry card text stays white (they have dark image overlays) */
+body.light [data-testid*="industry"] .text-white,
+body.light [data-testid*="industry"] h3,
+body.light [data-testid*="industry"] p {
+    color: white !important;
+}
+
+/* Footer stays dark */
+body.light footer {
+    background: #1a1a2e !important;
+}
+
+body.light footer .text-white,
+body.light footer .text-white\/90,
+body.light footer .text-white\/80,
+body.light footer .text-white\/70,
+body.light footer .text-white\/60,
+body.light footer .text-white\/50,
+body.light footer .text-white\/40,
+body.light footer .text-white\/30,
+body.light footer .text-white\/20 {
+    color: inherit !important;
+}
+
+body.light footer * {
+    /* reset: don't override footer children */
+}
+
+/* Logo G box always white text */
+body.light .bg-gradient-to-br .text-white,
+body.light [data-testid="nav-logo"] .text-white {
+    color: white !important;
+}
+
+/* Big watermark text behind sections */
+body.light .text-white\/\[0\.02\],
+body.light [class*="text-white/[0.02]"] {
     color: rgba(124, 58, 237, 0.03) !important;
 }
 
-/* Keep purple buttons visible in both modes */
-body.light .bg-\[#7000FF\] {
-    background: #7c3aed !important;
-    color: white !important;
-}
-
-body.light .bg-\[#7000FF\] .text-white,
-body.light .bg-\[#7000FF\] span,
-body.light [data-testid="nav-cta"] {
-    color: white !important;
-}
-
-/* WhatsApp button stays green */
-body.light .bg-\[#22C55E\] {
-    color: white !important;
-}
-
-body.light .bg-\[#22C55E\] .text-white {
-    color: white !important;
-}
-
-/* Industry card text stays white (over dark image overlays) */
-body.light .industry-card h3,
-body.light .industry-card p,
-body.light [data-testid*="industry-card"] h3,
-body.light [data-testid*="industry-card"] p {
-    color: white !important;
-}
-
-body.light [data-testid*="industry-card"] .text-white\/60 {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Footer stays dark in both modes */
-body.light footer,
-body.light footer * {
-    /* do not override footer colors - keep it dark */
-}
-
-/* Theme toggle button styles */
-.theme-toggle-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s;
-    flex-shrink: 0;
-    line-height: 1;
-}
-
-.theme-toggle-btn:hover {
-    border-color: #7000FF;
-    transform: scale(1.1);
-}
-
+/* Theme toggle button in light mode */
 body.light .theme-toggle-btn {
     border-color: rgba(196, 181, 253, 0.2);
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* Smooth transition on all theme-affected elements */
-body,
-body * {
-    transition-property: background-color, border-color, color, box-shadow;
-    transition-duration: 0.4s;
-    transition-timing-function: ease;
-}
-
-/* Exclude animations from the transition */
-body [class*="animate"],
-body [class*="motion"],
-body .marquee-track,
-body .marquee-track * {
-    transition-property: none !important;
+/* Toaster notifications */
+body.light [data-sonner-toast] {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(196, 181, 253, 0.2) !important;
+    color: #1a1a2e !important;
 }
