@@ -12,12 +12,34 @@ const marqueeItems = [
 export function Navbar({ onBookDemo }) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isDark, setIsDark] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Load saved theme preference
+    useEffect(() => {
+        const saved = localStorage.getItem('gq-theme');
+        if (saved === 'light') {
+            setIsDark(false);
+            document.body.classList.add('light');
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const newIsDark = !isDark;
+        setIsDark(newIsDark);
+        if (newIsDark) {
+            document.body.classList.remove('light');
+            localStorage.setItem('gq-theme', 'dark');
+        } else {
+            document.body.classList.add('light');
+            localStorage.setItem('gq-theme', 'light');
+        }
+    };
 
     const navLinks = [
         { label: 'Industries', href: '#industries' },
@@ -62,8 +84,8 @@ export function Navbar({ onBookDemo }) {
                 className="flex justify-center px-4 pt-3"
             >
                 <div className={`flex items-center justify-between gap-4 md:gap-8 px-5 py-3 rounded-full border transition-all duration-500 ${scrolled
-                        ? 'bg-black/70 backdrop-blur-xl border-white/10 shadow-2xl'
-                        : 'bg-black/30 backdrop-blur-md border-white/5'
+                    ? 'bg-black/70 backdrop-blur-xl border-white/10 shadow-2xl'
+                    : 'bg-black/30 backdrop-blur-md border-white/5'
                     }`}>
                     {/* Logo */}
                     <button
@@ -92,6 +114,16 @@ export function Navbar({ onBookDemo }) {
                             </button>
                         ))}
                     </div>
+
+                    {/* Theme toggle */}
+                    <button
+                        data-testid="theme-toggle"
+                        onClick={toggleTheme}
+                        className="theme-toggle-btn"
+                        title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                    >
+                        {isDark ? '🌙' : '☀️'}
+                    </button>
 
                     {/* CTA */}
                     <button
