@@ -1,167 +1,592 @@
 /* ========== GLOBAL ANIMATION KEYFRAMES ========== */
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(112, 0, 255, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(112, 0, 255, 0.6), 0 0 80px rgba(112, 0, 255, 0.2); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(112, 0, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(112, 0, 255, 0.6), 0 0 80px rgba(112, 0, 255, 0.2);
+    }
 }
 
 @keyframes beam-sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 @keyframes grid-fade {
-  0% { opacity: 0.03; }
-  50% { opacity: 0.08; }
-  100% { opacity: 0.03; }
+    0% {
+        opacity: 0.03;
+    }
+
+    50% {
+        opacity: 0.08;
+    }
+
+    100% {
+        opacity: 0.03;
+    }
 }
 
 @keyframes text-shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 @keyframes spin-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash-offset {
-  0% { stroke-dashoffset: 1000; }
-  100% { stroke-dashoffset: 0; }
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
 }
 
 /* ========== UTILITY CLASSES ========== */
 
 .text-gradient {
-  background: linear-gradient(135deg, #7000FF 0%, #00F0FF 50%, #A855F7 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: text-shimmer 4s linear infinite;
+    background: linear-gradient(135deg, #7000FF 0%, #00F0FF 50%, #A855F7 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-shimmer 4s linear infinite;
 }
 
 .text-gradient-static {
-  background: linear-gradient(135deg, #7000FF, #00F0FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: linear-gradient(135deg, #7000FF, #00F0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 1.25rem;
+    transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
 }
 
 .glass-card:hover {
-  border-color: rgba(112, 0, 255, 0.4);
+    border-color: rgba(112, 0, 255, 0.4);
 }
 
 .glow-primary {
-  box-shadow: 0 0 30px rgba(112, 0, 255, 0.3), 0 0 60px rgba(112, 0, 255, 0.1);
+    box-shadow: 0 0 30px rgba(112, 0, 255, 0.3), 0 0 60px rgba(112, 0, 255, 0.1);
 }
 
 .glow-secondary {
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), 0 0 60px rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), 0 0 60px rgba(0, 240, 255, 0.1);
 }
 
 .bg-grid {
-  background-image:
-    linear-gradient(rgba(112, 0, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(112, 0, 255, 0.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-fade 6s ease-in-out infinite;
+    background-image:
+        linear-gradient(rgba(112, 0, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(112, 0, 255, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: grid-fade 6s ease-in-out infinite;
 }
 
 .bg-radial-hero {
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(112, 0, 255, 0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(112, 0, 255, 0.15) 0%, transparent 60%);
 }
 
 .bg-radial-secondary {
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
 }
 
 .marquee-track {
-  animation: marquee 30s linear infinite;
+    animation: marquee 30s linear infinite;
 }
 
 .marquee-track:hover {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 /* Beam effect on cards */
 .beam-effect {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .beam-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(112, 0, 255, 0.8), transparent);
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(112, 0, 255, 0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .beam-effect:hover::before {
-  opacity: 1;
-  animation: beam-sweep 2s ease-in-out infinite;
+    opacity: 1;
+    animation: beam-sweep 2s ease-in-out infinite;
 }
 
 /* Noise overlay */
 .noise-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.03;
-  pointer-events: none;
-  mix-blend-mode: overlay;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
 }
 
 /* Custom cursor on interactive elements */
 .cursor-glow {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* Floating animation */
 .float-animation {
-  animation: float 6s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
 }
 
 /* Magnetic button effect container */
 .magnetic-btn {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .magnetic-btn:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .magnetic-btn:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 /* Section divider beam */
 .section-beam {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(112, 0, 255, 0.5) 50%, transparent 100%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(112, 0, 255, 0.5) 50%, transparent 100%);
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+    border-color: #7000FF;
+    transform: scale(1.1);
+}
+
+
+/* ==================================================================
+   LIGHT MODE — COMPLETE OVERRIDES
+   Everything below this line ONLY activates when body has class "light".
+   Dark mode (default) is 100% untouched above.
+   ================================================================== */
+
+/* Pastel background blobs */
+body.light .App::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 55% 45% at 15% 20%, rgba(196, 181, 253, 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 35% at 80% 15%, rgba(165, 243, 252, 0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 45% at 60% 80%, rgba(252, 211, 243, 0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 35% at 20% 70%, rgba(187, 247, 208, 0.2) 0%, transparent 55%);
+}
+
+/* ---- ROOT WRAPPER ---- */
+body.light .App {
+    background: var(--bg-deep) !important;
+}
+
+/* ---- BG EFFECTS ---- */
+body.light .bg-grid {
+    background-image:
+        linear-gradient(rgba(112, 0, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(112, 0, 255, 0.025) 1px, transparent 1px) !important;
+}
+
+body.light .bg-radial-hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196, 181, 253, 0.12) 0%, transparent 60%) !important;
+}
+
+body.light .bg-radial-secondary {
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(165, 243, 252, 0.08) 0%, transparent 60%) !important;
+}
+
+/* ---- GLASS CARD ---- */
+body.light .glass-card {
+    background: rgba(255, 255, 255, 0.55) !important;
+    border-color: rgba(196, 181, 253, 0.15) !important;
+}
+
+body.light .glass-card:hover {
+    border-color: rgba(124, 58, 237, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.08) !important;
+}
+
+/* ---- SECTION BEAM ---- */
+body.light .section-beam {
+    background: linear-gradient(90deg, transparent, rgba(196, 181, 253, 0.3), transparent) !important;
+}
+
+/* ---- BEAM EFFECT ---- */
+body.light .beam-effect::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4), transparent) !important;
+}
+
+/* ---- GLOWS ---- */
+body.light .glow-primary {
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1) !important;
+}
+
+body.light .glow-secondary {
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1) !important;
+}
+
+/* ---- THEME TOGGLE IN LIGHT MODE ---- */
+body.light .theme-toggle-btn {
+    border-color: rgba(196, 181, 253, 0.2);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== TAILWIND CLASS OVERRIDES ===== */
+
+/* --- text-white / text-white/XX --- */
+body.light .text-white {
+    color: var(--fg-default) !important;
+}
+
+body.light .text-white\/90 {
+    color: #2d2d44 !important;
+}
+
+body.light .text-white\/80 {
+    color: #3a3a55 !important;
+}
+
+body.light .text-white\/70 {
+    color: #4a4a66 !important;
+}
+
+body.light .text-white\/60 {
+    color: #64748b !important;
+}
+
+body.light .text-white\/50 {
+    color: #64748b !important;
+}
+
+body.light .text-white\/40 {
+    color: #94a3b8 !important;
+}
+
+body.light .text-white\/30 {
+    color: #b0b8c8 !important;
+}
+
+body.light .text-white\/20 {
+    color: #94a3b8 !important;
+}
+
+body.light .text-white\/15 {
+    color: #94a3b8 !important;
+}
+
+body.light .text-white\/\[0\.02\] {
+    color: rgba(124, 58, 237, 0.04) !important;
+}
+
+/* --- bg-black/XX --- */
+body.light .bg-black\/80 {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.light .bg-black\/70 {
+    background: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.light .bg-black\/40 {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.light .bg-black\/30 {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.light .bg-black\/90 {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* --- bg-white/XX --- */
+body.light .bg-white\/5 {
+    background: rgba(255, 255, 255, 0.45) !important;
+}
+
+body.light .bg-white\/10 {
+    background: rgba(255, 255, 255, 0.55) !important;
+}
+
+body.light .bg-white\/\[0\.02\] {
+    background: rgba(255, 255, 255, 0.35) !important;
+}
+
+body.light .bg-white\/\[0\.03\] {
+    background: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* --- border-white/XX --- */
+body.light .border-white\/5,
+body.light .border-white\/10,
+body.light .border-white\/20 {
+    border-color: rgba(196, 181, 253, 0.15) !important;
+}
+
+/* --- shadow --- */
+body.light .shadow-2xl {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* --- Placeholder text --- */
+body.light .placeholder\:text-white\/20::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* --- FORM INPUTS (Contact, BookDemo) --- */
+body.light input,
+body.light textarea,
+body.light select {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(196, 181, 253, 0.2) !important;
+    color: var(--fg-default) !important;
+}
+
+body.light input:focus,
+body.light textarea:focus,
+body.light select:focus {
+    border-color: #7c3aed !important;
+}
+
+body.light input::placeholder,
+body.light textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+body.light option {
+    background: #f4f2fa !important;
+    color: #1a1a2e !important;
+}
+
+/* --- hover:bg-white/5 --- */
+body.light .hover\:bg-white\/5:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ===== ELEMENT-SPECIFIC PROTECTIONS ===== */
+
+/* Purple CTA buttons — ALWAYS white text */
+body.light .bg-\[#7000FF\],
+body.light [class*="bg-[#7000FF]"] {
+    background: #7c3aed !important;
+}
+
+body.light .bg-\[#7000FF\] *,
+body.light [data-testid="nav-cta"],
+body.light [data-testid="nav-cta"] *,
+body.light [data-testid="nav-mobile-cta"],
+body.light [data-testid="hero-cta-book-demo"],
+body.light [data-testid="hero-cta-book-demo"] *,
+body.light [data-testid="cta-book-demo-button"],
+body.light [data-testid="cta-book-demo-button"] *,
+body.light [data-testid="contact-submit-button"],
+body.light [data-testid="contact-submit-button"] * {
+    color: white !important;
+}
+
+/* WhatsApp — ALWAYS white */
+body.light [data-testid="whatsapp-chat-toggle"],
+body.light [data-testid="whatsapp-chat-toggle"] * {
+    color: white !important;
+}
+
+body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\],
+body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\] * {
+    color: white !important;
+}
+
+/* Industry card text over dark image overlays — ALWAYS white */
+body.light [data-testid*="industry-card"] .text-white,
+body.light [data-testid*="industry-card"] h3,
+body.light [data-testid*="industry-card"] .text-white\/60 {
+    color: white !important;
+}
+
+/* Logo G box always white text */
+body.light .bg-gradient-to-br .text-white,
+body.light [data-testid="nav-logo"] .bg-gradient-to-br .text-white,
+body.light [data-testid="nav-logo"] .bg-gradient-to-br span {
+    color: white !important;
+}
+
+/* Testimonial author initial circle */
+body.light [data-testid*="testimonial"] .text-white.font-bold {
+    color: white !important;
+}
+
+/* Hero WhatsApp CTA button — keep white text on transparent */
+body.light [data-testid="hero-cta-whatsapp"] {
+    color: var(--fg-default) !important;
+    border-color: rgba(196, 181, 253, 0.2) !important;
+}
+
+/* Footer — stays dark always */
+body.light footer {
+    background: #1a1a2e !important;
+}
+
+body.light footer .text-white {
+    color: #ffffff !important;
+}
+
+body.light footer .text-white\/90 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light footer .text-white\/80 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.light footer .text-white\/70 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body.light footer .text-white\/60 {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.light footer .text-white\/50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.light footer .text-white\/40 {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+body.light footer .text-white\/30 {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.light footer .text-white\/20 {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.light footer .text-white\/15 {
+    color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.light footer .border-white\/10,
+body.light footer .border-white\/5 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.light footer .bg-gradient-to-br span {
+    color: white !important;
+}
+
+/* BookDemo modal backdrop */
+body.light [data-testid="book-demo-overlay"] {
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.light [data-testid="book-demo-panel"] {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(196, 181, 253, 0.15) !important;
+}
+
+/* Toaster */
+body.light [data-sonner-toast] {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(196, 181, 253, 0.2) !important;
+    color: #1a1a2e !important;
+}
+
+/* Before/After comparison rows */
+body.light .border-red-500\/10 {
+    border-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+body.light .bg-red-500\/5 {
+    background: rgba(239, 68, 68, 0.06) !important;
+}
+
+body.light .border-\[#22C55E\]\/10 {
+    border-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+body.light .bg-\[#22C55E\]\/5 {
+    background: rgba(34, 197, 94, 0.06) !important;
 }

@@ -20,6 +20,17 @@
     --radius: 0.75rem;
 }
 
+/* Light mode variable overrides */
+body.light {
+    --bg-deep: #f4f2fa;
+    --bg-card: rgba(255, 255, 255, 0.6);
+    --bg-glass: rgba(255, 255, 255, 0.5);
+    --fg-default: #1a1a2e;
+    --fg-muted: #64748b;
+    --primary-glow: rgba(124, 58, 237, 0.2);
+    --secondary-glow: rgba(6, 182, 212, 0.2);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -74,6 +85,14 @@ code {
     border-radius: 3px;
 }
 
+body.light::-webkit-scrollbar-track {
+    background: #f4f2fa;
+}
+
+body.light::-webkit-scrollbar-thumb {
+    background: rgba(196, 181, 253, 0.5);
+}
+
 section {
     max-width: 100vw;
     overflow-x: hidden;
@@ -97,311 +116,4 @@ section {
         row-gap: inherit;
         gap: inherit;
     }
-}
-
-
-/* ==================================================================
-   LIGHT MODE — COMPLETE OVERRIDES
-   Toggle: body.light class added/removed via Navbar toggle button.
-   Dark mode (default) is COMPLETELY UNTOUCHED above this line.
-   ================================================================== */
-
-/* ---- Theme toggle button ---- */
-.theme-toggle-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s;
-    flex-shrink: 0;
-    line-height: 1;
-}
-
-.theme-toggle-btn:hover {
-    border-color: #7000FF;
-    transform: scale(1.1);
-}
-
-/* ---- Light mode variables ---- */
-body.light {
-    --bg-deep: #f4f2fa;
-    --bg-card: rgba(255, 255, 255, 0.6);
-    --bg-glass: rgba(255, 255, 255, 0.5);
-    --fg-default: #1a1a2e;
-    --fg-muted: #64748b;
-    --primary-glow: rgba(124, 58, 237, 0.2);
-    --secondary-glow: rgba(6, 182, 212, 0.2);
-}
-
-body.light::-webkit-scrollbar-track {
-    background: #f4f2fa;
-}
-
-body.light::-webkit-scrollbar-thumb {
-    background: rgba(196, 181, 253, 0.5);
-}
-
-/* ---- ROOT APP WRAPPER — the #1 fix ---- */
-body.light .App {
-    background: #f4f2fa !important;
-}
-
-/* Pastel gradient blobs behind everything */
-body.light .App::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(ellipse 55% 45% at 15% 20%, rgba(196, 181, 253, 0.3) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 35% at 80% 15%, rgba(165, 243, 252, 0.25) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 45% at 60% 80%, rgba(252, 211, 243, 0.25) 0%, transparent 55%),
-        radial-gradient(ellipse 45% 35% at 20% 70%, rgba(187, 247, 208, 0.2) 0%, transparent 55%);
-}
-
-/* ---- Background effects (grid, radials) ---- */
-body.light .bg-grid {
-    background-image:
-        linear-gradient(rgba(112, 0, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(112, 0, 255, 0.025) 1px, transparent 1px) !important;
-}
-
-body.light .bg-radial-hero {
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196, 181, 253, 0.15) 0%, transparent 60%) !important;
-}
-
-body.light .bg-radial-secondary {
-    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(165, 243, 252, 0.08) 0%, transparent 60%) !important;
-}
-
-/* ---- Glass Cards ---- */
-body.light .glass-card {
-    background: rgba(255, 255, 255, 0.55) !important;
-    border-color: rgba(196, 181, 253, 0.15) !important;
-}
-
-body.light .glass-card:hover {
-    border-color: rgba(124, 58, 237, 0.3) !important;
-    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.08) !important;
-}
-
-/* ---- Section beam dividers ---- */
-body.light .section-beam {
-    background: linear-gradient(90deg, transparent, rgba(196, 181, 253, 0.3), transparent) !important;
-}
-
-/* ---- Beam effect on cards ---- */
-body.light .beam-effect::before {
-    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4), transparent) !important;
-}
-
-/* ---- Glow effects ---- */
-body.light .glow-primary {
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1) !important;
-}
-
-body.light .glow-secondary {
-    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1) !important;
-}
-
-/* ---- NAVBAR / MARQUEE ---- */
-body.light .bg-black\/80 {
-    background: rgba(255, 255, 255, 0.6) !important;
-}
-
-body.light .bg-black\/70 {
-    background: rgba(255, 255, 255, 0.8) !important;
-}
-
-body.light .bg-black\/30 {
-    background: rgba(255, 255, 255, 0.6) !important;
-}
-
-body.light .bg-black\/90 {
-    background: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* ---- GLOBAL TEXT COLOR OVERRIDES ---- */
-body.light .text-white {
-    color: #1a1a2e !important;
-}
-
-body.light .text-white\/90 {
-    color: #2d2d44 !important;
-}
-
-body.light .text-white\/80 {
-    color: #3a3a55 !important;
-}
-
-body.light .text-white\/70 {
-    color: #4a4a66 !important;
-}
-
-body.light .text-white\/60 {
-    color: #64748b !important;
-}
-
-body.light .text-white\/50 {
-    color: #64748b !important;
-}
-
-body.light .text-white\/40 {
-    color: #94a3b8 !important;
-}
-
-body.light .text-white\/30 {
-    color: rgba(112, 0, 255, 0.2) !important;
-}
-
-body.light .text-white\/20 {
-    color: #94a3b8 !important;
-}
-
-body.light .text-white\/15 {
-    color: #94a3b8 !important;
-}
-
-/* ---- BORDER OVERRIDES ---- */
-body.light .border-white\/10,
-body.light .border-white\/5,
-body.light .border-white\/20 {
-    border-color: rgba(196, 181, 253, 0.15) !important;
-}
-
-/* ---- BACKGROUND OPACITY OVERRIDES ---- */
-body.light .bg-white\/5 {
-    background: rgba(255, 255, 255, 0.45) !important;
-}
-
-body.light .bg-white\/10 {
-    background: rgba(255, 255, 255, 0.55) !important;
-}
-
-body.light .bg-white\/3 {
-    background: rgba(255, 255, 255, 0.35) !important;
-}
-
-body.light .bg-white\/\[0\.03\] {
-    background: rgba(255, 255, 255, 0.35) !important;
-}
-
-/* ---- SHADOW OVERRIDES ---- */
-body.light .shadow-2xl {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
-}
-
-/* ---- FORM INPUTS ---- */
-body.light input,
-body.light textarea,
-body.light select {
-    background: rgba(255, 255, 255, 0.6) !important;
-    border-color: rgba(196, 181, 253, 0.2) !important;
-    color: #1a1a2e !important;
-}
-
-body.light input:focus,
-body.light textarea:focus,
-body.light select:focus {
-    border-color: #7c3aed !important;
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08) !important;
-}
-
-body.light input::placeholder,
-body.light textarea::placeholder {
-    color: #94a3b8 !important;
-}
-
-/* ---- KEEP THESE ELEMENTS UNCHANGED ---- */
-
-/* Purple CTA buttons stay purple with white text */
-body.light .bg-\[#7000FF\],
-body.light [class*="bg-[#7000FF]"] {
-    background: #7c3aed !important;
-}
-
-body.light .bg-\[#7000FF\] *,
-body.light [data-testid="nav-cta"],
-body.light [data-testid="nav-cta"] *,
-body.light [data-testid="nav-mobile-cta"],
-body.light [data-testid="hero-cta-book-demo"],
-body.light [data-testid="hero-cta-book-demo"] * {
-    color: white !important;
-}
-
-/* WhatsApp stays green with white content */
-body.light .bg-\[#22C55E\],
-body.light [data-testid="whatsapp-chat-toggle"],
-body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\] {
-    color: white !important;
-}
-
-body.light [data-testid="whatsapp-chat-toggle"] * {
-    color: white !important;
-}
-
-/* WhatsApp chat window header */
-body.light [data-testid="whatsapp-chat-widget"] .bg-\[#22C55E\] * {
-    color: white !important;
-}
-
-/* Industry card text stays white (they have dark image overlays) */
-body.light [data-testid*="industry"] .text-white,
-body.light [data-testid*="industry"] h3,
-body.light [data-testid*="industry"] p {
-    color: white !important;
-}
-
-/* Footer stays dark */
-body.light footer {
-    background: #1a1a2e !important;
-}
-
-body.light footer .text-white,
-body.light footer .text-white\/90,
-body.light footer .text-white\/80,
-body.light footer .text-white\/70,
-body.light footer .text-white\/60,
-body.light footer .text-white\/50,
-body.light footer .text-white\/40,
-body.light footer .text-white\/30,
-body.light footer .text-white\/20 {
-    color: inherit !important;
-}
-
-body.light footer * {
-    /* reset: don't override footer children */
-}
-
-/* Logo G box always white text */
-body.light .bg-gradient-to-br .text-white,
-body.light [data-testid="nav-logo"] .text-white {
-    color: white !important;
-}
-
-/* Big watermark text behind sections */
-body.light .text-white\/\[0\.02\],
-body.light [class*="text-white/[0.02]"] {
-    color: rgba(124, 58, 237, 0.03) !important;
-}
-
-/* Theme toggle button in light mode */
-body.light .theme-toggle-btn {
-    border-color: rgba(196, 181, 253, 0.2);
-    background: rgba(255, 255, 255, 0.5);
-}
-
-/* Toaster notifications */
-body.light [data-sonner-toast] {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-color: rgba(196, 181, 253, 0.2) !important;
-    color: #1a1a2e !important;
 }
