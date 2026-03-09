@@ -22,7 +22,7 @@ db = client[os.environ['DB_NAME']]
 # Resend setup
 resend.api_key = os.environ.get('RESEND_API_KEY', '')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
-NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'Nikethangouda@gmail.com')
+NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'nikethan@glidequantumlabs.com')
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
