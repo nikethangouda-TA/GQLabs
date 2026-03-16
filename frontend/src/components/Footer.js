@@ -15,9 +15,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#7000FF] to-[#00F0FF] flex items-center justify-center">
-                <span className="font-bold text-white text-sm" style={{ fontFamily: 'Unbounded' }}>G</span>
-              </div>
+              <img src="/logo.png" alt="GlideQuantum Labs" className="w-10 h-10 object-contain" />
               <span className="font-bold text-white text-lg" style={{ fontFamily: 'Unbounded' }}>
                 {SITE_CONFIG.companyName}
               </span>
