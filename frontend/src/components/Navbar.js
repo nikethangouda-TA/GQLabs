@@ -93,11 +93,9 @@ export function Navbar({ onBookDemo }) {
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         className="flex items-center gap-2 cursor-pointer shrink-0"
                     >
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7000FF] to-[#00F0FF] flex items-center justify-center">
-                            <span className="font-bold text-white text-sm" style={{ fontFamily: 'Unbounded' }}>G</span>
-                        </div>
+                        <img src="/logo.png" alt="GlideQuantum Labs" className="w-8 h-8 object-contain" />
                         <span className="text-white font-bold text-sm hidden sm:block" style={{ fontFamily: 'Unbounded' }}>
-                            {SITE_CONFIG.companyName.split(' ')[0]}
+                            {SITE_CONFIG.companyName}
                         </span>
                     </button>
 
