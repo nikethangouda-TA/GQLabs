@@ -20,6 +20,17 @@
     --radius: 0.75rem;
 }
 
+@layer utilities {
+    .brand-gradient {
+        background: linear-gradient(to right, #7000FF, #00F0FF);
+    }
+    .brand-text-gradient {
+        background: linear-gradient(to right, #7000FF, #00F0FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
 /* Light mode variable overrides */
 body.light {
     --bg-deep: #f4f2fa;
